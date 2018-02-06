@@ -10,6 +10,8 @@
 // KelloggCoin, that will massively disrupt financial markets at the Global
 // Hub.
 
+
+
 let blockchain = [
   { fromUser: null, toUser: "brian", amount: 21000 },
   { fromUser: "brian", toUser: "ben", amount: 9000 },
@@ -19,6 +21,45 @@ let blockchain = [
   { fromUser: "jeff", toUser: "brian", amount: 4500 },
   { fromUser: "jeff", toUser: "ben", amount: 1750 }
 ]
+
+let getBalance = function(username) {
+
+  let brian = 0
+  let ben = 0
+  let jeff = 0
+
+  for (let i=0; i<blockchain.length; i++) {
+      if (blockchain[i].toUser === "brian") {
+      brian=brian+blockchain[i].amount
+      }
+      if (blockchain[i].toUser === "ben") {
+      ben=ben+blockchain[i].amount
+      }
+      if (blockchain[i].toUser === "jeff") {
+      jeff=jeff+blockchain[i].amount
+      }
+
+      if (blockchain[i].fromUser === "brian") {
+      brian=brian-blockchain[i].amount
+      }
+      if (blockchain[i].fromUser === "ben") {
+      ben=ben-blockchain[i].amount
+      }
+      if (blockchain[i].fromUser === "jeff") {
+      jeff=jeff-blockchain[i].amount
+      }
+  }
+
+  if (username === "brian") {
+  return brian
+  }
+  else if (username === "ben") {
+  return ben
+  }
+  else if (username === "jeff") {
+  return jeff
+  }
+}
 
 // Write a function that, when given a username (i.e. brian, ben, or jeff),
 // returns the number of KelloggCoin that user has in their KelloggCoin "wallet".
